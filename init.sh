@@ -30,5 +30,7 @@ fi
 
 (echo "${CRON} su --shell=/bin/bash - www-data -c 'python /root/subliminal/subliminal.py -l ${LANG} -w ${WEEK}' >> /dev/null"; crontab -l | grep -v "subliminal") | crontab -
 
+python /root/subliminal/subliminal.py -l ${LANG} -w ${WEEK}
+
 /usr/bin/supervisord
 
