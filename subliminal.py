@@ -1,25 +1,23 @@
 #!/usr/bin/python
 
-import sys
+import sys, getopt
 from datetime import timedelta
 from babelfish import Language
 from subliminal import download_best_subtitles, region, save_subtitles, scan_videos
 
+opts, args = getopt.getopt(sys.argv[1:],'l:w:')
+
 for opt, arg in opts:
-	if opt in ("-l"):
-		lang = arg
-	elif opt in ("-w"):
-		week = arg
+        if opt in ("-l"):
+                lang = arg
+        elif opt in ("-w"):
+                week = int(arg)
 
-# configure the cache
+print 'Lang '+str(lang)
+print 'Week '+str(week)
+
 region.configure('dogpile.cache.dbm', arguments={'filename': 'cachefile.dbm'})
-
-# scan for videos newer than 2 weeks and their existing subtitles in a folder
 videos = scan_videos('/tvshows', age=timedelta(weeks=week))
-
-# download best subtitles
 subtitles = download_best_subtitles(videos, {Language(lang)})
-
-# save them to disk, next to the video
 for v in videos:
     save_subtitles(v, subtitles[v])
