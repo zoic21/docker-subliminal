@@ -9,7 +9,6 @@ wget \
 ntp \
 unzip \
 curl \
-wget \
 supervisor \
 tar \
 python \
