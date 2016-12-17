@@ -23,7 +23,8 @@ vim \
 git \
 locate \
 dos2unix \
-python-pip
+python-pip \
+cron
 
 RUN pip install subliminal
 
