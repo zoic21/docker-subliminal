@@ -16,7 +16,11 @@ if [ -z ${WEEK} ]; then
 	WEEK=2
 fi
 
-(echo "00 00 * * * su --shell=/bin/bash - www-data -c 'python /root/subliminal.py -l ${LANG} -w ${WEEK}' >> /dev/null"; crontab -l | grep -v "subliminal" | crontab -
+if [ -z ${CRON} ]; then
+	CRON='00 00 * * *'
+fi
+
+(echo "${CRON} su --shell=/bin/bash - www-data -c 'python /root/subliminal.py -l ${LANG} -w ${WEEK}' >> /dev/null"; crontab -l | grep -v "subliminal" | crontab -
 
 /usr/bin/supervisord
 
