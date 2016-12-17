@@ -17,6 +17,9 @@ else
    git clone --depth 1 https://github.com/Diaoul/subliminal.git
 fi
 
+cd /root/subliminal
+python setup.py install
+
 rm /root/subliminal/subliminal.py
 cp /root/subliminal.py /root/subliminal/subliminal.py
 

@@ -26,9 +26,6 @@ dos2unix \
 python-pip \
 cron
 
-RUN pip install subliminal
-
-
 ####################################################################SYSTEM#######################################################################################
 
 RUN echo "root:${SHELL_ROOT_PASSWORD}" | chpasswd && \
