@@ -13,8 +13,7 @@ for opt, arg in opts:
         elif opt in ("-w"):
                 week = int(arg)
 
-print 'Lang '+str(lang)
-print 'Week '+str(week)
+print 'Searching subtitle into /tvshows for langue '+str(lang)+' and series less '+str(week)+' week';
 
 region.configure('dogpile.cache.dbm', arguments={'filename': 'cachefile.dbm'})
 videos = scan_videos('/tvshows', age=timedelta(weeks=week))
